@@ -9,4 +9,8 @@ class BookmarkApp < Sinatra::Base
   get '/' do
     "Hello World"
   end
+
+  get '/bookmarks' do
+    erb(:bookmarks)
+  end
 end
