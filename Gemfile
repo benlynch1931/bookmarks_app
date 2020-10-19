@@ -14,3 +14,5 @@ gem'simplecov-console'
 
 gem "shotgun"
 gem "launchy"
+
+gem "pg", require: false
