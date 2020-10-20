@@ -7,7 +7,8 @@ end
 
 feature "Extracting from the Database #self.all" do
   scenario 'outputs all data from the database' do
+    bookamrks = "1, www.google.co.uk 2, www.netflix.com 3, www.youtube.com 4, www.makers.tech"
     visit('/bookmarks')
-    expect(page).to have_text("2, http://www.makersacademy.com\n4, http://google.com\n3, http://www.destroyallsoftware.com\n")
+    expect(page).to have_text(bookamrks)
   end
 end

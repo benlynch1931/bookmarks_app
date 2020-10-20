@@ -22,15 +22,12 @@ class Bookmark
   end
 
   def all_records
+    bookmark_str = ""
     query = @bookmark_db.exec "SELECT * FROM bookmarks"
-    newlist = query.map do |row|
-      "#{row['id']}, #{row['url']}"
+    query.each do |row|
+      bookmark_str << "#{row['id']}, #{row['url']}\n"
     end
-    newlist.each do |each|
-      each
-    end
-   newlist[0]
-
-
+    bookmark_str
   end
+
 end
