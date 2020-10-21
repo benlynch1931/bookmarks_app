@@ -12,7 +12,7 @@ class BookmarkApp < Sinatra::Base
   end
 
   get '/bookmarks' do
-    @newbookmarks = Bookmark.new('bookmark_manager', 'ben')
+    @bookmark = Bookmark.all_records
     erb(:bookmarks)
   end
 end

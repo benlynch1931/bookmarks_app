@@ -1,2 +1,4 @@
 <h1>webpage</h1>
-<h2><%=@newbookmarks.all_records %></h2>
+  <%@bookmark.each do |bmk| %>
+    <h2><%= bmk %></h2>
+  <% end %>
