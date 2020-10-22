@@ -8,11 +8,32 @@ class BookmarkApp < Sinatra::Base
 
 
   get '/' do
-    "Hello World"
+    erb :index
   end
 
   get '/bookmarks' do
-    @bookmark = Bookmark.all_records
-    erb(:bookmarks)
+    @bookmarks = Bookmark.all_bookmarks
+    erb :bookmarks
   end
+
+  get '/add_bookmark' do
+    erb(:'add_bookmarks')
+  end
+
+  post '/add_to_database' do
+    Bookmark.create(params[:title], params[:url])
+    redirect('/bookmarks')
+  end
+
+  get '/edit_bookmarks' do
+    @bookmarks = Bookmark.all_bookmarks
+    erb(:'edit_bookmarks')
+  end
+
+  delete '/delete_bookmark' do
+    Bookmark.delete(params[:check])
+    redirect('/bookmarks')
+  end
+
+  run! if app_file == $0
 end

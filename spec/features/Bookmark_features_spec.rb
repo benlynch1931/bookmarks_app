@@ -1,14 +1,10 @@
-feature 'viewing bookmarks' do
-  scenario 'it displays booksmarks' do
-    visit('/bookmarks')
-    expect(page).to have_content('webpage')
+feature "show bookmarks" do
+  scenario "user comes from homepage and sees his bookmarks" do
+    visit('/')
+    click_button('Show Bookmarks')
+    expect(page).to have_content "Makers"
+    expect(page).to have_content "Destroy All Software"
+    expect(page).to have_content "Google"
   end
-end
 
-feature "Extracting from the Database #self.all" do
-  scenario 'outputs all data from the database' do
-    bookamrks = "1, www.google.co.uk 2, www.netflix.com 3, www.youtube.com 4, www.makers.tech"
-    visit('/bookmarks')
-    expect(page).to have_text(bookamrks)
-  end
 end

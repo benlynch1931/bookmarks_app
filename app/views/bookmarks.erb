@@ -1,4 +1,14 @@
-<h1>webpage</h1>
-  <%@bookmark.each do |bmk| %>
-    <h2><%= bmk %></h2>
-  <% end %>
+  <body>
+    <h1>My first bookmark</h1>
+    <ul>
+      <% @bookmarks.each do |bmk| %>
+        <li><a href="<%= bmk.url %>"><%= bmk.title %></a></li>
+      <% end %>
+    </ul>
+    <form action="/add_bookmark">
+      <input type="submit" value="Add New">
+    </form>
+    <form action="/edit_bookmarks">
+      <input type="submit" value="Edit">
+    </form>
+  </body>

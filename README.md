@@ -15,6 +15,7 @@ bundle install
 ```
 2. GOTO: Database Configuration
 3. Update the `USER` and `DATABSE` constants in `spec/units/bookmark_spec.rb` to match your own choices so the tests run
+4. Ensure the 'RACK_ENV' in spec_helper is set to 'test'
 
 ## Running server and accessing webpage:
 
@@ -28,16 +29,22 @@ localhost:6030
 ```
 ## Database Configuration:
 
-### Creating Database (PSQL)
-1. Connect to psql
-2. Create the database using the psql command CREATE DATABASE bookmark_manager;
-3. Connect to the database using the pqsl command `\c bookmark_manager`;
-4. Run the SQL scripts in the `db/migrations/01_create_bookmarks_database.sql` file,  in the given order.
+### Creating Database Development Environment(PSQL)
+1. In Terminal, run:
+`psql postgres`
+2. Create the database using the psql command `CREATE DATABASE bookmark_manager;`
+3. Quit psql using `\q`
+4. Run this code to set up database platform:
+`psql bookmark_manager -f 01_create_bookmarks_table.sql`
 
-### Modifying Database to pass unit tests
-1. Connect to psql
-2. Ensure you're working on the correct database
-3. Run the SQL scripst in the `db/migrations/02_create_bookmarks_table.sql` file, in the given order
+
+### Creating Database Test Environment(PSQL)
+1. In Terminal, run:
+`psql postgres`
+2. Create the database using the psql command `CREATE DATABASE bookmark_manager_test;`
+3. Quit psql using `\q`
+4. Run this code to set up database platform:
+`psql bookmark_manager_test -f 01_create_bookmarks_table.sql`
 
 
 # User Stories
