@@ -14,7 +14,7 @@
 bundle install
 ```
 2. GOTO: Database Configuration
-3. Update the `USER` and `DATABSE` constants in `spec/units/bookmark_spec.rb` to match your own choices so the tests run
+3. Update the `USER` and `DATABASE` constants in `spec/units/bookmark_spec.rb` to match your own choices so the tests run
 4. Ensure the 'RACK_ENV' in spec_helper is set to 'test'
 
 ## Running server and accessing webpage:

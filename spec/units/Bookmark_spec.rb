@@ -2,11 +2,6 @@ require './app/models/Bookmark.rb'
 describe Bookmark do
   USER = "ben"
   DATABASE = "bookmark_manager"
-  #it 'displays array of bookmark instances' do
-    #bookmarkone = Bookmark.new
-    #bookmarktwo = Bookmark.new
-    #expect(Bookmark.all).to include(bookmarkone, bookmarktwo)
-  #end
 
   describe ' #all_bookmarks' do
     let(:bookmark_arr) { [["Makers", "http://www.makersacademy.com"],
@@ -22,7 +17,7 @@ describe Bookmark do
       end
   end
 
-  
+
 
   context ' #create' do
 
