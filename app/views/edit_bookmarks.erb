@@ -6,10 +6,7 @@
         <li id="<%= bmk.title %>-id">
           <input type="checkbox" id="<%= bmk.title %>" name="check[]" value="<%= bmk.title %>">
           <a href="<%= bmk.url %>"><%= bmk.title %></a>
-          <form class="" action="/bookmarks/<%= bmk.id %>" method="post">
-            <input type="hidden" name="_method" value="PATCH">
-            <input type="submit" name="update" value="Update">
-          </form>
+          <a href="bookmarks/<%= bmk.id %>/edit">Update</a>
           </li>
       <% end %>
     </ul>

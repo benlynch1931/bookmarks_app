@@ -1,4 +1,4 @@
-require 'pg'
+require "pg"
 
 class Bookmark
   attr_reader :id, :title, :url
@@ -13,10 +13,13 @@ class Bookmark
     connect_to_db
 
     result = @@con.exec("SELECT * FROM bookmarks;")
-    # result.map { |bookmark| { title: bookmark['title'], url: bookmark['url'] } }
-    result.map do |bookmark|
-      Bookmark.new(id: bookmark['id'], title: bookmark['title'], url: bookmark['url'])
-    end
+    format_result(result)
+  end
+
+  def self.get(bookmark_id)
+    connect_to_db
+    result = @@con.exec("SELECT * FROM bookmarks WHERE id = #{bookmark_id};")
+    format_result(result).first
   end
 
   def self.create(title, url)
@@ -30,16 +33,21 @@ class Bookmark
     titles.each do |title|
       @@con.exec("DELETE FROM bookmarks WHERE title='#{title}';")
     end
-
   end
 
   private
+
   def self.connect_to_db
-    if ENV['RACK_ENV'] == 'test'
-      @@con = PG.connect(dbname: 'bookmark_manager_test', user: 'ben')
+    if ENV["RACK_ENV"] == "test"
+      @@con = PG.connect(dbname: "bookmark_manager_test", user: "dan")
     else
-      @@con = PG.connect(dbname: 'bookmark_manager', user: 'ben')
+      @@con = PG.connect(dbname: "bookmark_manager", user: "dan")
     end
   end
 
+  def self.format_result(result)
+    result.map do |bookmark|
+      Bookmark.new(id: bookmark["id"], title: bookmark["title"], url: bookmark["url"])
+    end
+  end
 end
